@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="theme-color" content="#50C878">
+	<link rel="icon" href="img/favicon.jpeg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+	 <link rel="stylesheet" href="css/media.css">
+    <title>ICU - Shree Sai Hospital ICU Treatment Bilapur</title>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <main>
+        <header id="header"></header><!--End-header-->
+		<br><br>
+		<section>
+			<div class="mainGalley">
+				 <div class="container">
+					<div class="SubHeading" id="mainTitle"> 						
+					</div>
+					<div class="mainBox">
+						<div class="TreatImg" id="trImg">							
+						</div>
+						<div class="treatDescription" id="TrData">
+						  
+						</div>
+					</div> <!--end--box--> 					
+				 </div>
+			</div>
+		</section><!--end--tratment--->
+		<br><br>
+		<footer id="footer"></footer><!--end-footer-->
+    </main>
+    <script type="module" src="js/main.js"></script>
+	<script>
+		fetch("js/Treatments.json").then((responce)=>{
+			return responce.json();
+		}).then((data)=>{
+			mainTitle.innerHTML=`
+		   <h2><strong>${data[3].title}</strong></h2>
+			 `;
+			 trImg.innerHTML=`
+				<img src="serviceImg/${data[3].thumbnail}" alt="${data[3].title}">
+			 `;
+			 TrData.innerHTML+=`
+				<h3>${data[3].title}</h3>
+				<p>${data[3].description}</p>
+				 <div class="actionBtn newBtn" id="bt">
+					<a class="btn" href="tel:07909620000">
+						Book Appointment
+					</a>
+				</div>
+			 `;
+		}); 		
+		 
+	</script>
+</body>
+</html>
